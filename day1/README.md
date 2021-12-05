@@ -1,6 +1,6 @@
 ## Problem 1 of Day 1
 
-Written in [AWK](https://en.wikipedia.org/wiki/AWK).
+Written in [Awk](https://en.wikipedia.org/wiki/AWK).
 
 `awk -f prob1.awk input_data`
 
