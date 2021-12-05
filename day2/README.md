@@ -1,6 +1,7 @@
 ## Problem 1 of Day 2
 
-Solved with `sed` and `bc` (thus no source file other than the line below):
+Solved with [sed](https://en.wikipedia.org/wiki/Sed) and [bc](https://en.wikipedia.org/wiki/Bc_%28programming_language%29),
+thus no source file other than the line below):
 
 `(sed 's/forward /forward+=/g; s/up /depth-=/g; s/down /depth+=/g;' path/to/day2_input; echo 'forward*depth' ) | bc`
 

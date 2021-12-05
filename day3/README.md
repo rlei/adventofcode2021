@@ -1,6 +1,6 @@
 ## Problem 1 of Day 3
 
-Solved with [D](https://dlang.org/).
+Solved with [D](https://dlang.org).
 
 This is my first time coding in D so the code is probably not idiomatic or optimal.
 
