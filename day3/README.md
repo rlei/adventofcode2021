@@ -11,5 +11,9 @@ To run:
 
 ## Problem 2 of Day 3
 
-TBD.
+Solved in D as well.
+
+To run:
+
+`dmd -run prob2.d < path/to/input_data`
 
