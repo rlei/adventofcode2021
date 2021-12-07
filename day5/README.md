@@ -7,8 +7,7 @@ Solved with plain old C. Tested with
 
 To run:
 
-`gcc -Wall -O2 -o prob1 prob1.c`
-`prob1 < path/to/input_file`
+`gcc -Wall -O2 -o prob1 prob1.c` then `prob1 < path/to/input_file`
 
 
 ## Problem 2 of Day 5
