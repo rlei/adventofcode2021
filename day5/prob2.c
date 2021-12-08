@@ -13,11 +13,11 @@ typedef struct {
 
 static Coords scanCoords(const char *p);
 
-static void setYBits(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], int x, int y1, int y2);
-
-static void setXBits(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], int y, int x1, int x2);
+static void setBits(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], Coords from, Coords to);
 
 static int countBits(uint64_t crossBitmap[][I64_LINE_WIDTH]);
+
+static void dump(uint64_t bitmap[][I64_LINE_WIDTH]);
 
 int main()
 {
@@ -36,13 +36,13 @@ int main()
     Coords from = scanCoords(lineBuf);
     Coords to = scanCoords(arrow + 4);
 
-    if (from.x == to.x) {
-      setYBits(bitmap, crossBitmap, from.x, from.y, to.y);
-    } else if (from.y == to.y) {
-      setXBits(bitmap, crossBitmap, from.y, from.x, to.x);
+    if (from.x == to.x || from.y == to.y || abs(from.x - to.x) == abs(from.y - to.y)) {
+      setBits(bitmap, crossBitmap, from, to);
     }
   }
 
+  dump(bitmap);
+  dump(crossBitmap);
   printf("%d\n", countBits(crossBitmap));
   return 0;
 }
@@ -65,33 +65,40 @@ static Coords scanCoords(const char *p) {
   return ret;
 }
 
-static void setYBits(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], int x, int y1, int y2) {
-  int yStart = y1 < y2 ? y1 : y2;
-  int yEnd = y1 > y2 ? y1 : y2;
-  for (int y = yStart; y <= yEnd; y++) {
-    uint64_t mask = 1ULL << (y & 63);
-    if (bitmap[x][y / 64] & mask) {
-      // already set. this is a cross
-      crossBitmap[x][y / 64] |= mask;
+static inline void setBit(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], int x, int y) {
+    uint64_t mask = 1ULL << (x & 63);
+    if ((bitmap[y][x / 64] & mask) == 0) {
+      bitmap[y][x / 64] |= mask;
     } else {
-      bitmap[x][y / 64] |= mask;
+      // already set. this is a cross
+      crossBitmap[y][x / 64] |= mask;
     }
+}
+
+static inline int sign(int n) {
+  return !n ? 0 : ((n > 0) ? 1 : -1);
+}
+
+static void setBits(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], Coords from, Coords to) {
+  int xInc = sign(to.x - from.x);
+  int yInc = sign(to.y - from.y);
+  for (int x = from.x, y = from.y; x != to.x + xInc || y != to.y + yInc; x += xInc, y += yInc) {
+    setBit(bitmap, crossBitmap, x, y);
   }
 }
 
-static void setXBits(uint64_t bitmap[][I64_LINE_WIDTH], uint64_t crossBitmap[][I64_LINE_WIDTH], int y, int x1, int x2) {
-  int xStart = x1 < x2 ? x1 : x2;
-  int xEnd = x1 > x2 ? x1 : x2;
-
-  uint64_t mask = 1ULL << (y & 63);
-  for (int x = xStart; x <= xEnd; x++) {
-    if (bitmap[x][y / 64] & mask) {
-      // already set. this is a cross
-      crossBitmap[x][y / 64] |= mask;
-    } else {
-      bitmap[x][y / 64] |= mask;
+static void dump(uint64_t bitmap[][I64_LINE_WIDTH]) {
+#if 0
+  for (size_t i = 0; i < MAX_GRID; i++) {
+    for (size_t j = 0; j < I64_LINE_WIDTH; j++) {
+      for (int n = 0; n < 64; n++) {
+        putchar((bitmap[i][j] >> n) & 1 ? 'X' : '.');
+      }
     }
+    printf("\n");
   }
+  printf("-----------\n");
+#endif
 }
 
 static int countBits(uint64_t crossBitmap[][I64_LINE_WIDTH]) {
