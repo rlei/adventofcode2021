@@ -1,6 +1,6 @@
 ## Problem 1 of Day 6
 
-Solved with x86\_64 assembler on Intel MBP 15" 2019, using [nasm](https://www.nasm.us/). XCode CLT is also needed.
+Solved with x86\_64 assembly on Intel MBP 15" 2019, using [nasm](https://www.nasm.us/). XCode CLT is also needed.
 
 For it to work on Linux, syscall numbers will need to be adjusted accordingly.
 
