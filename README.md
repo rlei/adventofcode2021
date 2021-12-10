@@ -10,7 +10,7 @@ I'll try my best not to use one language more than once, but no guarantee ;)
 * Day 4: [C#](https://docs.microsoft.com/en-us/dotnet/csharp/)
 * Day 5: C
 * Day 6: x86\_64 Assembly (using [nasm](https://www.nasm.us/))
-* Day 7:
+* Day 7: [Elixir](https://elixir-lang.org/)
 * Day 8:
 * ...
 
