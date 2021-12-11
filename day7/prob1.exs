@@ -1,8 +1,6 @@
 defmodule Prob1 do
 
   def solve do
-    # {:ok, content} = File.read("day7input.txt")
-
     frequencies = IO.read(:stdio, :all)
       |> String.trim_trailing
       |> String.split(",")

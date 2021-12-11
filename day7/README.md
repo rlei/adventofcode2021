@@ -8,4 +8,8 @@ To run (as an Elixir script):
 
 ## Problem 2 of Day 6
 
-TBD.
+My second Elixir program XD.
+
+To run (as an Elixir script):
+
+`elixir prob2.exs < path/to/input_file`
