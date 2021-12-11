@@ -1,5 +1,6 @@
 *input.txt
 a.out*
+*.o
 .vscode/
 .DS_Store
 bin/
