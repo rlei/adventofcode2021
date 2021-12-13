@@ -6,7 +6,7 @@ To run (as an Elixir script):
 
 `elixir prob1.exs < path/to/input_file`
 
-## Problem 2 of Day 6
+## Problem 2 of Day 7
 
 My second Elixir program XD.
 
