@@ -13,5 +13,5 @@ I'll try my best not to use one language more than once, but no guarantee ;)
 * Day 7: [Elixir](https://elixir-lang.org/)
 * Day 8: [Prolog](https://en.wikipedia.org/wiki/Prolog)
 * Day 9: JavaScript, with [Node.js](https://nodejs.org/)
-* Day 10:
-
+* Day 10: [F#](https://fsharp.org/)
+* Day 11:

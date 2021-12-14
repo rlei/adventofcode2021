@@ -2,6 +2,7 @@
 a.out*
 *.o
 .vscode/
+.ionide/
 .DS_Store
 bin/
 obj/
