@@ -1,6 +1,6 @@
 ## Problem 1 of Day 10
 
-Solved with [F#](https://fsharp.org/).
+Solved with [F#](https://fsharp.org/). This is my first F# program.
 
 To run:
 
