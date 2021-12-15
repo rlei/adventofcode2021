@@ -5,11 +5,13 @@ let rec readLines () = seq {
         yield! readLines ()
 }
 
-let points = Map[(')', 3); (']', 57); ('}', 1197); ('>', 25137);]
+// Note there's no need to "complete" the left brackets to their right counter parts
+// then look up their points. It's essentially a left -> point mapping.
+let points = Map[('(', 1L); ('[', 2L); ('{', 3L); ('<', 4L);]
 
 let pairs = Map[('(', ')'); ('[', ']'); ('{', '}'); ('<', '>');]
 
-let output =
+let scores =
   readLines()
   |> Seq.map(fun line -> (([], None), line) ||> Seq.fold (
     fun (stack, firstIllegal) ch ->
@@ -27,10 +29,10 @@ let output =
             | Some unmatched -> (tail, Some right)  // found first illegal (unmatched right)
             | None -> (tail, Some right)            // Should be impossible
   ))
-  |> Seq.map(fun x ->
-    match snd x with
-    | Some ch -> points.TryFind(ch).Value
-    | None -> 0)
-  |> Seq.sum
+  |> Seq.filter(fun (stack, firstIllegal) -> not(List.isEmpty(stack)) && firstIllegal = None)
+  |> Seq.map(fun (stack, _) ->
+    stack |> List.fold (fun sum left -> sum * 5L + points.TryFind(left).Value) 0L)
+  |> Seq.toArray
+  |> Array.sort
 
-printfn "%d" output
+printfn "%d" scores[scores.Length / 2]
