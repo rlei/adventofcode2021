@@ -16,4 +16,6 @@ I'll try my best not to use one language more than once, but no guarantee ;)
 * Day 10: [F#](https://fsharp.org/)
 * Day 11: [Go](https://go.dev/)
 * Day 12: [Dart](https://dart.dev/)
-* Day 13:
+* Day 13: [OCaml](https://ocaml.org/)
+* Day 14: [Kotlin](https://kotlinlang.org/)
+* Day 15:
