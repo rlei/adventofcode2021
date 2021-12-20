@@ -19,3 +19,8 @@ I'll try my best not to use one language more than once, but no guarantee ;)
 * Day 13: [OCaml](https://ocaml.org/)
 * Day 14: [Kotlin](https://kotlinlang.org/)
 * Day 15:
+* Day 16:
+* Day 17: [Julia](https://julialang.org/)
+* Day 18:
+* Day 19:
+* Day 20:
