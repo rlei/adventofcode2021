@@ -17,7 +17,7 @@ This repo aims to solve the [Advent of Code 2021](https://adventofcode.com/2021/
 * Day 13: [OCaml](https://ocaml.org/)
 * Day 14: [Kotlin](https://kotlinlang.org/)
 * Day 15: [Python](https://www.python.org/)
-* Day 16:
+* Day 16: [C++ 20](https://en.wikipedia.org/wiki/C%2B%2B20)
 * Day 17: [Julia](https://julialang.org/)
 * Day 18:
 * Day 19:
